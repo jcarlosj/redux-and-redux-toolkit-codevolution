@@ -1,6 +1,7 @@
 const redux = require( 'redux' );
 const createStore = redux.createStore;
 const bindActionCreators = redux.bindActionCreators;    // ? Exportamos el metodo para vincular creadores de acciones (prescindir del dispatch)
+const combineReducers = redux.combineReducers;          // ? Exportamos el metodo que nos permitira la combinacion de reducers para pasarlos al store
 
 // ! Defines the action name as a constant
 const CAKE_ORDERED = 'CAKE_ORDERED';
@@ -35,13 +36,12 @@ function restockedIceCream( qty = 1 ) {
 }
 
 // ! initial state ( default values )
-const initialState = {
-    numOfCakes: 10,
-    numOfIceCreams: 20
-}
+const
+    initialCakeState     = { numOfCakes: 10 },
+    initialIceCreamState = { numOfIceCreams: 20 };
 
 // ! Reducer - ( previousState, action ) => newState;
-const reducer = ( state = initialState, action ) => {
+const cakeReducer = ( state = initialCakeState, action ) => {
     switch( action.type ) {
         case CAKE_ORDERED:
             return {
@@ -53,6 +53,12 @@ const reducer = ( state = initialState, action ) => {
                 ...state,
                 numOfCakes: state.numOfCakes + action.payload
             }
+        default:
+            return state;
+    }
+}
+const iceCreamReducer = ( state = initialIceCreamState, action ) => {
+    switch( action.type ) {
         case ICECREAM_ORDERED:
             return {
                 ...state,
@@ -68,9 +74,16 @@ const reducer = ( state = initialState, action ) => {
     }
 }
 
+// ! Combine Reducers
+const rootReducer = combineReducers({
+    // key: Reducer
+    cake: cakeReducer,
+    iceCream: iceCreamReducer
+});
+
 // ! Redux store
 // ? Responsabilidad #1: Mantiene el estado de la aplicacion
-const store = createStore( reducer );   // ? Crea el almacen de datos de Redux
+const store = createStore( rootReducer );   // ? Crea el almacen de datos de Redux
 
 // ? Responsabilidad #2: Permite acceder al estado global de la aplicacion
 console.log( 'Initial state: ', store.getState() );     
