@@ -3,12 +3,19 @@ const createStore = redux.createStore;
 
 // ! Defines the action name as a constant
 const CAKE_ORDERED = 'CAKE_ORDERED';
+const CAKE_RESTOCKED = 'CAKE_RESTOCKED';
 
-// ! Action creator: is a function that returns an action
+// ! Action creator: is a function that returns an action (payload es una convencion en redux para pasar la data al store)
 function orderCake() {
     return {
         type: CAKE_ORDERED,
-        quantity: 1
+        payload: 1
+    }
+}
+function restockedCake( qty = 1 ) {
+    return {
+        type: CAKE_RESTOCKED,
+        payload: qty
     }
 }
 
@@ -25,6 +32,11 @@ const reducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 numOfCakes: state.numOfCakes - 1
+            }
+        case CAKE_RESTOCKED:
+            return {
+                ...state,
+                numOfCakes: state.numOfCakes + action.payload
             }
         default:
             return state;
@@ -47,6 +59,7 @@ const unsubscribe = store.subscribe( () =>
 store.dispatch( orderCake() );
 store.dispatch( orderCake() );
 store.dispatch( orderCake() );
+store.dispatch( restockedCake( 3 ) );
 
 // ? Responsabilidad #5: Cancela registro o rechazar subscripcion de los listeners
 unsubscribe();
