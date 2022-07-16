@@ -43,4 +43,7 @@ En el directorio del proyecto, puede ejecutar:
 Para instalar las dependencias requeridas
 
 ### `npm start`
-Para ejecutar la aplicación
+Para ejecutar la aplicación tienda de pasteles y helados
+
+### `npm run start:nested`
+Para ejecutar ejemplo de estados anidados
