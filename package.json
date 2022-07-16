@@ -10,5 +10,8 @@
     "redux"
   ],
   "author": "Juan Carlos Jiménez Gutiérrez <jcjimenez29@misena.edu.co>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "redux": "^4.2.0"
+  }
 }
