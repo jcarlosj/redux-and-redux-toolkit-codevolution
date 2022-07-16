@@ -47,3 +47,5 @@ Para ejecutar la aplicación tienda de pasteles y helados
 
 ### `npm run start:nested`
 Para ejecutar ejemplo de estados anidados
+ - Ejemplo tradicional de estados anidados retornando todo el objeto
+ - Ejemplo usando el paquete immer que hace una copia mutable del estado para asignar los valores a las propiedades directamente
