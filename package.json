@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "start:nested": "node ./src/nested-state.js"
+    "start:nested": "node ./src/nested-state.js",
+    "start:async": "node ./src/async-actions.js"
   },
   "keywords": [
     "redux"
