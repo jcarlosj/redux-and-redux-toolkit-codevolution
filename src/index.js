@@ -2,6 +2,11 @@ const redux = require( 'redux' );
 const createStore = redux.createStore;
 const bindActionCreators = redux.bindActionCreators;    // ? Exportamos el metodo para vincular creadores de acciones (prescindir del dispatch)
 const combineReducers = redux.combineReducers;          // ? Exportamos el metodo que nos permitira la combinacion de reducers para pasarlos al store
+const applyMiddleware = redux.applyMiddleware;          // ? Permite la implementacion de Middlewares para Redux 
+
+const
+    reduxLogger = require( 'redux-logger' ),    
+    logger = reduxLogger.createLogger();        // ? Permite la creacion de un log para Redux
 
 // ! Defines the action name as a constant
 const CAKE_ORDERED = 'CAKE_ORDERED';
@@ -83,15 +88,13 @@ const rootReducer = combineReducers({
 
 // ! Redux store
 // ? Responsabilidad #1: Mantiene el estado de la aplicacion
-const store = createStore( rootReducer );   // ? Crea el almacen de datos de Redux
+const store = createStore( rootReducer, applyMiddleware( logger ) );   // ? Crea el almacen de datos de Redux e implementa un Middleware de Log para Redux
 
 // ? Responsabilidad #2: Permite acceder al estado global de la aplicacion
 console.log( 'Initial state: ', store.getState() );     
 
 // ? Responsabilidad #3: Registra o subscrible los listeners
-const unsubscribe = store.subscribe( () =>
-    console.log( 'Update state: ', store.getState() )
-);     
+const unsubscribe = store.subscribe( () => {});     
 
 // ? Responsabilidad #4: Permite la actualizacion del estado a traves del envio de acciones al Redux Store a traves del metodo dispatch()
 // store.dispatch( orderCake() );
