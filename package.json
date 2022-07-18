@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./src/redux/index.js",
     "start:nested": "node ./src/redux/nested-state.js",
-    "start:async": "node ./src/redux/async-actions.js"
+    "start:async": "node ./src/redux/async-actions.js",
+    "rtk": "node ./src/redux-toolkit/index.js"
   },
   "keywords": [
     "redux",
@@ -15,8 +16,10 @@
   "author": "Juan Carlos Jiménez Gutiérrez <jcjimenez29@misena.edu.co>",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
     "immer": "^9.0.15",
+    "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1"
