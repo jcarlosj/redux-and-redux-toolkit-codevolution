@@ -1,15 +1,16 @@
 {
-  "name": "redux-demo",
+  "name": "redux-toolkit",
   "version": "1.0.0",
   "description": "Redux Toolkit Tutorial (Codevolution)",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js",
-    "start:nested": "node ./src/nested-state.js",
-    "start:async": "node ./src/async-actions.js"
+    "start": "node ./src/redux/index.js",
+    "start:nested": "node ./src/redux/nested-state.js",
+    "start:async": "node ./src/redux/async-actions.js"
   },
   "keywords": [
-    "redux"
+    "redux",
+    "redux-toolkit"
   ],
   "author": "Juan Carlos Jiménez Gutiérrez <jcjimenez29@misena.edu.co>",
   "license": "ISC",

@@ -70,14 +70,14 @@ const fetchUsers = () => {
         dispatch( fetchUsersRequest() );                    // ? Cambia el estado cuando se esta por hacer la peticion
 
         axios
-            .get( 'https://jsonplaceholder.typicode.com/usersss' )
+            .get( 'https://jsonplaceholder.typicode.com/users' )
             .then( response => {
                 const users = response.data.map( user => ({
                     name: user.name,
                     email: user.email
                 }));
                 // response.data: son los usuarios
-                console.log( users );
+                // console.log( users );
 
                 dispatch( fetchUsersSuccess( users ) );     // ? Cambia el estado cuando la peticion es exitosa
             })
