@@ -6,9 +6,7 @@ const icecreamActions = require( './features/icecream/icecreamSlice' ).icecreamA
 console.log( 'Initial state: ', store.getState() );
 
 // ? Responsabilidad #3: Registra o subscrible los listeners
-const unsubscribe = store.subscribe( () => {
-    console.log( 'Update: ', store.getState() );
-}); 
+const unsubscribe = store.subscribe( () => {}); 
 
 // ? Responsabilidad #4: Permite la actualizacion del estado a traves del envio de acciones al Redux Store a traves del metodo dispatch()
 store.dispatch( cakeActions.ordered() );
