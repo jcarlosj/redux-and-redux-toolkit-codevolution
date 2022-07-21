@@ -13,14 +13,15 @@ const initialState = {
 // ? fetchUsers: El proceso asincrono generará tipos de acciones pendientes, cumplidas y rechazadas
 const fetchUsers = createAsyncThunk( 
         'user/fetchUsers',          // ? 'nombre de la accion' (action type)
-        () =>                       // ? funcion callback que crea el payload
-            axios
-                .get( 'https://jsonplaceholder.typicode.com/users' )
-                .then( response => response.data.map( user => ({
-                    name: user.name,
-                    email: user.email
-                })))
+        async () => {               // ? funcion callback que crea el payload
+            const response = await axios.get( 'https://jsonplaceholder.typicode.com/users' );
+
+            return response.data.map( user => ({
+                name: user.name,
+                email: user.email
+            }));
             // ! NOTA: No requerimos el catch ya que el error es manejado         
+        }
 );
 
 // ! Create a Redux State Slice (Crear una porción de estado Redux):
