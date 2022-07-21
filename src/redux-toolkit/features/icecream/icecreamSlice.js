@@ -21,8 +21,15 @@ const icecreamSlice = createSlice({
         restocked: ( state, action ) => {       // ? restocked: Sera el nombre de la accion creada automáticamente, no tendremos que escribirlas a mano.
             state.numOfIceCreams += action.payload
         }
+    },
+    extraReducers: {
+        // ! Ahora todos los pasteles se serviran con helado
+        // ! Brownie con helado: Al pedido de 'cake/ordered' a agregará un pedido de helado   
+        // ? slice-name/accion-name: Reducers - ( previousState, action ) => newState;
+        [ 'cake/ordered' ]: ( state ) => {
+            state.numOfIceCreams --;
+        }
     }
-
 });
 
 
