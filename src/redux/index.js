@@ -48,6 +48,8 @@ const
 // ! Reducer - ( previousState, action ) => newState;
 const cakeReducer = ( state = initialCakeState, action ) => {
     switch( action.type ) {
+        // ! Ahora todos los pasteles se serviran con helado
+        // ! Brownie con helado: Al pedido de CAKE_ORDERED a agregará un pedido de helado   
         case CAKE_ORDERED:
             return {
                 ...state,
@@ -73,6 +75,13 @@ const iceCreamReducer = ( state = initialIceCreamState, action ) => {
             return {
                 ...state,
                 numOfIceCreams: state.numOfIceCreams + action.payload
+            }
+        // ! Ahora todos los pasteles se serviran con helado
+        // ! Brownie con helado: Al pedido de CAKE_ORDERED a agregará un pedido de helado   
+        case CAKE_ORDERED: 
+            return {
+                ...state,
+                numOfIceCreams: state.numOfIceCreams - 1
             }
         default:
             return state;
