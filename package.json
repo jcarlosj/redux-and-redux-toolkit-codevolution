@@ -11,6 +11,7 @@
   },
   "keywords": [
     "redux",
+    "react-redux",
     "redux-toolkit"
   ],
   "author": "Juan Carlos Jiménez Gutiérrez <jcjimenez29@misena.edu.co>",
