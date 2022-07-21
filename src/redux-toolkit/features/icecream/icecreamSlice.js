@@ -1,5 +1,7 @@
 const createSlice = require( '@reduxjs/toolkit' ).createSlice;
 
+const { cakeActions } = require( '../cake/cakeSlice' );
+
 // ! initial state ( default values )
 const initialState = {
     numOfIceCreams: 20
@@ -22,13 +24,20 @@ const icecreamSlice = createSlice({
             state.numOfIceCreams += action.payload
         }
     },
-    extraReducers: {
+    // extraReducers: {
         // ! Ahora todos los pasteles se serviran con helado
         // ! Brownie con helado: Al pedido de 'cake/ordered' a agregará un pedido de helado   
         // ? slice-name/accion-name: Reducers - ( previousState, action ) => newState;
-        [ 'cake/ordered' ]: ( state ) => {
+        // [ 'cake/ordered' ]: ( state ) => {
+        //     state.numOfIceCreams --;
+    //     }
+    // }
+    // * ENFOQUE RECOMENDADO: Usar una funcion de compilacion.
+    // ? builder agregará el nuevo caso
+    extraReducers: ( builder ) => {
+        builder.addCase( cakeActions.ordered, ( state ) => {        // ? cakeActions.ordered es el action.type & la tipica funcion de un reducer
             state.numOfIceCreams --;
-        }
+        });    
     }
 });
 
